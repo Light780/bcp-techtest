@@ -1,0 +1,31 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@mixin color($bcp-theme) {
+  $color-config: mat.get-color-config($bcp-theme);
+  $primary-palette: map.get($color-config, 'primary');
+  $accent-palette: map.get($color-config, 'accent');
+
+  .background-primary {
+    background-color: mat.get-color-from-palette($primary-palette, 500);
+  }
+  .background-secondary {
+    background-color: mat.get-color-from-palette($accent-palette, 500);
+  }
+
+  .text-primary-mat {
+    color: mat.get-color-from-palette($primary-palette, 500)
+  }
+
+  .text-accent-mat {
+    color: mat.get-color-from-palette($accent-palette, 500) !important;
+  }
+}
+
+@mixin theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  @if $color-config != null {
+    @include color($theme);
+  }
+}

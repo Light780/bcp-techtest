@@ -1,7 +1,6 @@
 using System.Reflection;
 using BCP.Application.Interfaces.Security;
 using BCP.Application.Interfaces.Services;
-using BCP.Application.Interfaces.Services.Moneda;
 using BCP.Application.Security;
 using BCP.Application.Services;
 using Microsoft.Extensions.DependencyInjection;

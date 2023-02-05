@@ -2,7 +2,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using BCP.Application.Interfaces.Common;
-using BCP.Application.Interfaces.Services.Moneda;
+using BCP.Application.Interfaces.Services;
 using BCP.Application.Mappings;
 using BCP.Application.Services;
 using Xunit;

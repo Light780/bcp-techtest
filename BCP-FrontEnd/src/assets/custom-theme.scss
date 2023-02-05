@@ -1,0 +1,123 @@
+@use '@angular/material' as mat;
+@use 'styles' as styles;
+
+@include mat.core();
+
+// Colores
+$bcp-primary: (
+  50 : #e0e6f1,
+  100 : #b3c0db,
+  200 : #8096c3,
+  300 : #4d6cab,
+  400 : #264d99,
+  500 : #002d87,
+  600 : #00287f,
+  700 : #002274,
+  800 : #001c6a,
+  900 : #001157,
+  A100 : #8994ff,
+  A200 : #5667ff,
+  A400 : #2339ff,
+  A700 : #0922ff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  )
+);
+
+$bcp-accent: (
+  50 : #fefeff,
+  100 : #fcfdfe,
+  200 : #fbfbfe,
+  300 : #f9f9fd,
+  400 : #f7f8fc,
+  500 : #f6f7fc,
+  600 : #f5f6fc,
+  700 : #f3f5fb,
+  800 : #f2f3fb,
+  900 : #eff1fa,
+  A100 : #ffffff,
+  A200 : #ffffff,
+  A400 : #ffffff,
+  A700 : #ffffff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$bcp-warn: (
+  50 : #ffefe0,
+  100 : #ffd7b3,
+  200 : #ffbc80,
+  300 : #ffa14d,
+  400 : #ff8c26,
+  500 : #ff7800,
+  600 : #ff7000,
+  700 : #ff6500,
+  800 : #ff5b00,
+  900 : #ff4800,
+  A100 : #ffffff,
+  A200 : #fff5f2,
+  A400 : #ffcdbf,
+  A700 : #ffb9a6,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+// Paleta de Colores
+
+$bcp-palette-primary: mat.define-palette($bcp-primary, 500);
+$bcp-palette-accent: mat.define-palette($bcp-accent, 500);
+$bcp-palette-warn: mat.define-palette($bcp-warn, 500);
+
+// Tema propio
+$bcp-theme: mat.define-light-theme((
+  color: (
+    primary: $bcp-palette-primary,
+    accent: $bcp-palette-accent,
+    warn: $bcp-palette-warn
+  )
+));
+
+//Aplicar tema a componentes
+@include mat.all-component-themes($bcp-theme);
+@include styles.theme($bcp-theme);

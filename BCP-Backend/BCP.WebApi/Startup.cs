@@ -84,9 +84,7 @@ namespace BCP.WebApi
 
             app.UseCors("corsApp");
 
-            app.UseMiddleware<AuthenticationMiddleware>();
-            
-            app.UseMiddleware<ErrorHandlerMiddleware>();
+            app.UseMiddleware<CustomMiddleware>();
             
             app.UseHttpsRedirection();
 

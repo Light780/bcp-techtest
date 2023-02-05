@@ -72,4 +72,4 @@ yarn-error.log
 testem.log
 /typings
 
-.env
+enviroment.ts

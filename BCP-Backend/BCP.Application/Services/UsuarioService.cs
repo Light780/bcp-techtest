@@ -53,7 +53,7 @@ namespace BCP.Application.Services
                 Token = _jwtGenerator.CreateToken(usuario)
             };
             
-            return new Response<LoginUsuarioResponse>(loginResponse, "Usuario registrado correctamente");
+            return new Response<LoginUsuarioResponse>(loginResponse, "Te has registrado exitosamente");
         }
 
         public async Task<Response<LoginUsuarioResponse>> Login(LoginUsuarioRequest request)

@@ -72,7 +72,7 @@ namespace BCP.Application.Services
             return new Response<GetTipoCambioResponse>(response, "Tipo de Cambio actualizado correctamente");
         }
 
-        public async Task<Response<GetTipoCambioResponse>> Delete(DeleteTipoCambioRequest request)
+        public async Task<Response<string>> Delete(DeleteTipoCambioRequest request)
         {
             var validator = new DeleteTipoCambioValidator();
             var validatorResult = await validator.ValidateAsync(request);
@@ -87,7 +87,7 @@ namespace BCP.Application.Services
 
             await _context.SaveChangesAsync(default);
             
-            return new Response<GetTipoCambioResponse>(message: "Tipo de Cambio eliminado correctamente");
+            return new Response<string>(message: "Tipo de Cambio eliminado correctamente");
         }
 
         public async Task<Response<IEnumerable<GetTipoCambioResponse>>> Get(GetTipoCambioRequest request)

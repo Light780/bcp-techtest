@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using BCP.Application.Interfaces.Services.Moneda;
-using Microsoft.AspNetCore.Http;
+using BCP.Application.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BCP.WebApi.Controllers
