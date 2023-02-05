@@ -1,1 +1,0 @@
-{"ast":null,"code":"export * from './response.model';","map":{"version":3,"mappings":"AAAA,cAAc,kBAAkB","names":[],"sourceRoot":"","sources":["F:\\Development\\Technical Test\\BCP\\BCP-FrontEnd\\src\\app\\core\\models\\wrappers\\index.ts"],"sourcesContent":["export * from './response.model'\r\n"]},"metadata":{},"sourceType":"module","externalDependencies":[]}

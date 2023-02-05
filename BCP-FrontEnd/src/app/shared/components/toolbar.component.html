@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <button 
+    class="icon" 
+    mat-icon-button 
+    *ngIf="sideNav.mode === 'over'"
+    (click)="sideNav.toggle()"
+    >
+    <mat-icon *ngIf="!sideNav.opened">
+      menu
+    </mat-icon>
+    <mat-icon *ngIf="sideNav.opened">
+      close
+    </mat-icon>
+  </button>
+  <img height="23" src="../../../assets/logo.svg"/>
+  <span class="spacer"></span>
+  <span><h5>{{currentUser.nombreCompleto}}</h5></span>
+  <button class="icon" mat-icon-button color="warn" (click)="onLogout()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>

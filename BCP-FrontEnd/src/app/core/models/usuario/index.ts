@@ -1,3 +1,3 @@
 export * from './loginUsuarioRequest.model'
-export * from './loginUsuarioResponse.model'
-export * from './registerUsuario.model'
+export * from './usuarioDto.model'
+export * from './registerUsuarioRequest.model'

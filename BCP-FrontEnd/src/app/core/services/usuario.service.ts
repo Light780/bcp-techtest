@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core'
-import {BehaviorSubject, Observable, ReplaySubject} from 'rxjs'
-import {distinctUntilChanged, map} from 'rxjs/operators'
-import {LoginUsuarioResponse} from '../models'
-import {ApiService, JwtService} from './'
+import { Injectable } from '@angular/core'
+import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs'
+import { distinctUntilChanged, map } from 'rxjs/operators'
+import { UsuarioDTO } from '../models'
+import { ApiService, JwtService } from './'
 
-const initialValue: LoginUsuarioResponse = {
+const initialValue: UsuarioDTO = {
   correo: '',
   nombreCompleto: '',
   token: ''
@@ -12,22 +12,21 @@ const initialValue: LoginUsuarioResponse = {
 
 @Injectable()
 export class UsuarioService {
-  private readonly currentUserSubject = new BehaviorSubject<LoginUsuarioResponse>(initialValue)
+  private readonly currentUserSubject = new BehaviorSubject<UsuarioDTO>(initialValue)
   public currentUser = this.currentUserSubject.asObservable().pipe(distinctUntilChanged())
 
   private readonly isAuthenticatedSubject = new ReplaySubject<boolean>(1)
   public isAuthenticated = this.isAuthenticatedSubject.asObservable()
 
-  constructor(
+  constructor (
     private readonly apiService: ApiService,
     private readonly jwtService: JwtService
   ) {
   }
 
-  populate(): void {
+  populate (): void {
     if (this.jwtService.getToken() !== undefined) {
-
-      this.apiService.get<LoginUsuarioResponse>('usuario')
+      this.apiService.get<UsuarioDTO>('usuario')
         .subscribe({
           next: (response) => {
             this.setAuth(response)
@@ -41,21 +40,21 @@ export class UsuarioService {
     }
   }
 
-  setAuth(usuario: LoginUsuarioResponse): void {
+  setAuth (usuario: UsuarioDTO): void {
     this.jwtService.setToken(usuario.token)
     this.currentUserSubject.next(usuario)
     this.isAuthenticatedSubject.next(true)
   }
 
-  purgeAuth(): void {
+  purgeAuth (): void {
     this.jwtService.deleteToken()
     this.currentUserSubject.next(initialValue)
     this.isAuthenticatedSubject.next(false)
   }
 
-  attemptAuth(type: string, request: any): Observable<LoginUsuarioResponse> {
+  attemptAuth (type: string, request: any): Observable<UsuarioDTO> {
     const route = (type === 'login') ? '/login' : '/register'
-    return this.apiService.post<LoginUsuarioResponse>('usuario' + route, request)
+    return this.apiService.post<UsuarioDTO>('usuario' + route, request)
       .pipe(map(
         response => {
           this.setAuth(response)
@@ -64,7 +63,7 @@ export class UsuarioService {
       ))
   }
 
-  getCurrentUser(): LoginUsuarioResponse {
+  getCurrentUser (): UsuarioDTO {
     return this.currentUserSubject.value
   }
 }

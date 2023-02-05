@@ -1,43 +1,43 @@
-import {HttpParams} from '@angular/common/http'
-import {Injectable} from '@angular/core'
-import {Observable} from 'rxjs'
+import { HttpParams } from '@angular/common/http'
+import { Injectable } from '@angular/core'
+import { Observable } from 'rxjs'
 import {
   ConvertTipoCambioRequest,
   ConvertTipoCambioResponse,
   CreateTipoCambioRequest,
   DeleteTipoCambioRequest,
   GetTipoCambioRequest,
-  GetTipoCambioResponse,
+  TipoCambioDTO,
   UpdateTipoCambioRequest
 } from '../models'
-import {ApiService} from './'
+import { ApiService } from './'
 
 @Injectable()
 export class TipoCambioService {
-  constructor(
+  constructor (
     private readonly apiService: ApiService
   ) {
   }
 
-  get(request: GetTipoCambioRequest): Observable<GetTipoCambioResponse[]> {
-    const params = new HttpParams({fromObject: {...request}})
-    return this.apiService.get<GetTipoCambioResponse[]>('tipoCambio', params)
+  get (request: GetTipoCambioRequest): Observable<TipoCambioDTO[]> {
+    const params = new HttpParams({ fromObject: { ...request } })
+    return this.apiService.get<TipoCambioDTO[]>('tipoCambio', params)
   }
 
-  convertAmount(request: ConvertTipoCambioRequest): Observable<ConvertTipoCambioResponse> {
-    const params = new HttpParams({fromObject: {...request}})
+  convertAmount (request: ConvertTipoCambioRequest): Observable<ConvertTipoCambioResponse> {
+    const params = new HttpParams({ fromObject: { ...request } })
     return this.apiService.get<ConvertTipoCambioResponse>('tipoCambio/convertAmount', params)
   }
 
-  create(request: CreateTipoCambioRequest): Observable<GetTipoCambioResponse> {
-    return this.apiService.post<GetTipoCambioResponse>('tipoCambio', request)
+  create (request: CreateTipoCambioRequest): Observable<TipoCambioDTO> {
+    return this.apiService.post<TipoCambioDTO>('tipoCambio', request)
   }
 
-  update(request: UpdateTipoCambioRequest): Observable<GetTipoCambioResponse> {
-    return this.apiService.put<GetTipoCambioResponse>('tipoCambio', request)
+  update (request: UpdateTipoCambioRequest): Observable<TipoCambioDTO> {
+    return this.apiService.put<TipoCambioDTO>('tipoCambio', request)
   }
 
-  delete(request: DeleteTipoCambioRequest): Observable<string> {
+  delete (request: DeleteTipoCambioRequest): Observable<string> {
     return this.apiService.delete(`tipoCambio?id=${request.id}`)
   }
 }

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { AuthComponent } from './auth.component'
+import { ToolbarComponent } from './toolbar.component'
 
-describe('AuthComponent', () => {
-  let component: AuthComponent
-  let fixture: ComponentFixture<AuthComponent>
+describe('ToolbarComponent', () => {
+  let component: ToolbarComponent
+  let fixture: ComponentFixture<ToolbarComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AuthComponent]
+      declarations: [ToolbarComponent]
     })
       .compileComponents()
 
-    fixture = TestBed.createComponent(AuthComponent)
+    fixture = TestBed.createComponent(ToolbarComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

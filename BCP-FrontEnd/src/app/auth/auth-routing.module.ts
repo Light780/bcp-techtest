@@ -1,11 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {RouterModule, Routes} from "@angular/router";
-import {AuthComponent} from "./pages/auth.component";
-import {NoAuthGuard} from "./services/no-auth-guard.service";
+import { NgModule } from '@angular/core'
+import { RouterModule, Routes } from '@angular/router'
+import { AuthComponent } from './pages/auth.component'
+import { NoAuthGuard } from './services/no-auth-guard.service'
 
-
-const routes : Routes = [
+const routes: Routes = [
   {
     path: 'login',
     component: AuthComponent,

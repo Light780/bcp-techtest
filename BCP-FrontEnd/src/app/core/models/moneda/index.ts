@@ -1,1 +1,1 @@
-export * from './getMonedaResponse.model'
+export * from './monedaDto.model'

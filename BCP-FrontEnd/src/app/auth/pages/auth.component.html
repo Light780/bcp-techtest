@@ -1,10 +1,6 @@
 <div class="min-vh-100 d-flex flex-column p-4 justify-content-center align-items-center background-primary">
   <div class="box background-secondary p-3 col-sm-3">
-    <h2 class="text-center mb-1 text-primary-mat">{{title}}</h2>
-    <p class="text-xs-center">
-      <a [routerLink]="['/login']" *ngIf="authType === 'register'">Tiene cuenta?</a>
-      <a [routerLink]="['/register']" *ngIf="authType === 'login'">¿No tiene cuenta?</a>
-    </p>
+    <h2 class="text-center mb-1 text-primary-mat">{{title}}</h2>    
     <form [formGroup]="authForm" class="d-flex flex-column mt-4" (ngSubmit)="submitForm()">
       <mat-form-field *ngIf="authType === 'register'">
         <mat-label>Nombre Completo</mat-label>
@@ -78,8 +74,12 @@
         </mat-error>
       </mat-form-field>
 
-      <button class="text-accent-mat" type="submit" mat-raised-button color="warn">{{buttonText}}</button>
+      <button class="text-accent-mat" type="submit" mat-raised-button color="warn">{{buttonText}}</button>      
     </form>
+    <p class="text-end mt-3">
+      <a [routerLink]="['/login']" *ngIf="authType === 'register'">Tiene cuenta?</a>
+      <a [routerLink]="['/register']" *ngIf="authType === 'login'">¿No tiene cuenta?</a>
+    </p>
   </div>
 </div>
 

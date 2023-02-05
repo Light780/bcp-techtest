@@ -9,9 +9,15 @@
 
   .background-primary {
     background-color: mat.get-color-from-palette($primary-palette, 500);
+    color: mat.get-color-from-palette($accent-palette, 500);
   }
+
   .background-secondary {
     background-color: mat.get-color-from-palette($accent-palette, 500);
+  }
+
+  .mat-expansion-indicator::after {
+    color: mat.get-color-from-palette($accent-palette, 500) !important;
   }
 
   .text-primary-mat {
