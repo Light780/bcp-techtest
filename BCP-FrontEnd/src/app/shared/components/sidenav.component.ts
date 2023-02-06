@@ -1,5 +1,5 @@
 import { BreakpointObserver } from '@angular/cdk/layout'
-import { Component, ViewChild } from '@angular/core'
+import { AfterViewInit, Component, ViewChild } from '@angular/core'
 import { MatSidenav } from '@angular/material/sidenav'
 
 @Component({
@@ -7,7 +7,7 @@ import { MatSidenav } from '@angular/material/sidenav'
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.css']
 })
-export class SidenavComponent {
+export class SidenavComponent implements AfterViewInit {
   @ViewChild(MatSidenav)
     sideNav: MatSidenav
 
@@ -16,14 +16,16 @@ export class SidenavComponent {
   ) {}
 
   ngAfterViewInit (): void {
-    this.observer.observe(['(max-width:800px)']).subscribe(res => {
-      if (res.matches) {
-        this.sideNav.mode = 'over'
-        void this.sideNav.close()
-      } else {
-        this.sideNav.mode = 'side'
-        void this.sideNav.open()
-      }
-    })
+    setTimeout(() => {
+      this.observer.observe(['(max-width:800px)']).subscribe(res => {
+        if (res.matches) {
+          this.sideNav.mode = 'over'
+          void this.sideNav.close()
+        } else {
+          this.sideNav.mode = 'side'
+          void this.sideNav.open()
+        }
+      })
+    }, 0)
   }
 }

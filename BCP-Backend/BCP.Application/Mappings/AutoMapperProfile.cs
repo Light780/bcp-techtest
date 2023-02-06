@@ -11,9 +11,8 @@ namespace BCP.Application.Mappings
         public AutoMapperProfile()
         {
             CreateMap<Moneda, GetMonedaResponse>()
-                .ForMember(p => p.Id, opt => opt.MapFrom(p => p.Id.ToString()))
-                .ForMember(p => p.Nombre,
-                opt => opt.MapFrom(p => string.Concat(p.CodigoSunat, $" ({p.Nombre})")));
+                .ForMember(p => p.Id, opt => opt.MapFrom(p => p.Id.ToString()));
+
 
             CreateMap<CreateTipoCambioRequest, TipoCambio>()
                 .ForMember(p => p.Moneda, opt => opt.Ignore())
@@ -22,6 +21,7 @@ namespace BCP.Application.Mappings
             
             CreateMap<TipoCambio, GetTipoCambioResponse>()
                 .ForMember(p => p.Id, opt => opt.MapFrom(p => p.Id.ToString()))
+                .ForMember(p => p.Fecha, opt => opt.MapFrom(p => p.Fecha.ToString("dd/MM/yyyy")))
                 .ForMember(p => p.Moneda,
                     opt => opt.MapFrom(p => string.Concat(p.Moneda.CodigoSunat, $" ({p.Moneda.Nombre})")));
 

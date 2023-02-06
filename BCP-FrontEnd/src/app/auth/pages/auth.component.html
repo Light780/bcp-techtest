@@ -1,85 +1,92 @@
 <div class="min-vh-100 d-flex flex-column p-4 justify-content-center align-items-center background-primary">
-  <div class="box background-secondary p-3 col-sm-3">
-    <h2 class="text-center mb-1 text-primary-mat">{{title}}</h2>    
-    <form [formGroup]="authForm" class="d-flex flex-column mt-4" (ngSubmit)="submitForm()">
-      <mat-form-field *ngIf="authType === 'register'">
-        <mat-label>Nombre Completo</mat-label>
-        <input
-          matInput
-          required
-          formControlName="nombreCompleto"
-        >
-        <mat-error
-          *ngIf="authForm.controls['nombreCompleto']!.hasError('required')"
-        >
-          Requerido
-        </mat-error>
+  <mat-card>
+    <mat-card-title class="text-primary-mat mt-3">
+      <h2>
+        {{title}}
+      </h2>
+    </mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="authForm" class="d-flex flex-column mt-4" (ngSubmit)="submitForm()">
+        <mat-form-field *ngIf="authType === 'register'">
+          <mat-label>Nombre Completo</mat-label>
+          <input
+            matInput
+            required
+            formControlName="nombreCompleto"
+          >
+          <mat-error
+            *ngIf="authForm.controls['nombreCompleto']!.hasError('required')"
+          >
+            Requerido
+          </mat-error>
+  
+          <mat-error
+            *ngIf="authForm.controls['nombreCompleto']!.hasError('minlength') ||
+            authForm.controls['nombreCompleto']!.hasError('maxlength')"
+          >
+            Longitud entre 15 y 50 caracteres
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label>Correo</mat-label>
+          <input
+            matInput
+            required
+            formControlName="correo"
+          >
+          <mat-error
+            *ngIf="authForm.controls['correo']!.hasError('required')"
+          >
+            Requerido
+          </mat-error>
+          <mat-error
+            *ngIf="authForm.controls['correo']!.hasError('minlength') ||
+            authForm.controls['correo']!.hasError('maxlength')"
+          >
+            Longitud entre 10 y 50 caracteres
+          </mat-error>
+          <mat-error
+            *ngIf="authForm.controls['correo']!.hasError('email') && (
+              !authForm.controls['correo']!.hasError('minlength') &&
+              !authForm.controls['correo']!.hasError('maxlength')
+            )"
+          >
+            Correo inválido
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            type="password"
+            required
+            formControlName="password"
+          >
+  
+          <mat-error
+            *ngIf="authForm.controls['password']!.hasError('required')"
+          >
+            Requerido
+          </mat-error>
+  
+          <mat-error
+            *ngIf="authForm.controls['password']!.hasError('minlength') ||
+            authForm.controls['password']!.hasError('maxlength')"
+          >
+            Longitud entre 8 y 32 caracteres
+          </mat-error>
+        </mat-form-field>
+  
+        <button class="text-accent-mat" type="submit" mat-raised-button color="warn">{{buttonText}}</button>
 
-        <mat-error
-          *ngIf="authForm.controls['nombreCompleto']!.hasError('minlength') ||
-          authForm.controls['nombreCompleto']!.hasError('maxlength')"
-        >
-          Longitud entre 15 y 50 caracteres
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Correo</mat-label>
-        <input
-          matInput
-          required
-          formControlName="correo"
-        >
-        <mat-error
-          *ngIf="authForm.controls['correo']!.hasError('required')"
-        >
-          Requerido
-        </mat-error>
-        <mat-error
-          *ngIf="authForm.controls['correo']!.hasError('minlength') ||
-          authForm.controls['correo']!.hasError('maxlength')"
-        >
-          Longitud entre 10 y 50 caracteres
-        </mat-error>
-        <mat-error
-          *ngIf="authForm.controls['correo']!.hasError('email') && (
-            !authForm.controls['correo']!.hasError('minlength') &&
-            !authForm.controls['correo']!.hasError('maxlength')
-          )"
-        >
-          Correo inválido
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Contraseña</mat-label>
-        <input
-          matInput
-          type="password"
-          required
-          formControlName="password"
-        >
-
-        <mat-error
-          *ngIf="authForm.controls['password']!.hasError('required')"
-        >
-          Requerido
-        </mat-error>
-
-        <mat-error
-          *ngIf="authForm.controls['password']!.hasError('minlength') ||
-          authForm.controls['password']!.hasError('maxlength')"
-        >
-          Longitud entre 8 y 32 caracteres
-        </mat-error>
-      </mat-form-field>
-
-      <button class="text-accent-mat" type="submit" mat-raised-button color="warn">{{buttonText}}</button>      
-    </form>
-    <p class="text-end mt-3">
-      <a [routerLink]="['/login']" *ngIf="authType === 'register'">Tiene cuenta?</a>
-      <a [routerLink]="['/register']" *ngIf="authType === 'login'">¿No tiene cuenta?</a>
-    </p>
-  </div>
+        <p class="text-end mt-3">
+          <a [routerLink]="['../login']" *ngIf="authType === 'register'">Tiene cuenta?</a>
+          <a [routerLink]="['../register']" *ngIf="authType === 'login'">¿No tiene cuenta?</a>
+        </p>      
+      </form>      
+    </mat-card-content>    
+  </mat-card>  
 </div>
 

@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router'
 import { MaterialModule } from './material.module'
 import { ToolbarComponent } from './components/toolbar.component'
 import { SidenavComponent } from './components/sidenav.component'
+import { FlexLayoutModule } from '@angular/flex-layout'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SidenavComponent } from './components/sidenav.component'
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ],
   exports: [
     CommonModule,

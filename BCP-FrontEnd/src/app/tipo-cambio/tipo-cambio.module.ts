@@ -1,10 +1,22 @@
 import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
-
+import { ConvertAmountComponent } from './pages/convert-amount.component'
+import { TipoCambioRoutingModule } from './tipo-cambio-routing.module'
+import { SharedModule } from '../shared/shared.module'
+import { MonedaModule } from '../moneda/moneda.module'
+import { ManagementComponent } from './pages/management.component'
+import { FormDialogComponent } from './components/form-dialog.component'
+import { TableComponent } from './components/table.component'
 @NgModule({
-  declarations: [],
+  declarations: [
+    ConvertAmountComponent,
+    ManagementComponent,
+    FormDialogComponent,
+    TableComponent
+  ],
   imports: [
-    CommonModule
+    TipoCambioRoutingModule,
+    SharedModule,
+    MonedaModule
   ]
 })
 export class TipoCambioModule { }

@@ -8,18 +8,18 @@ namespace BCP.UnitTests.DTOs
     public class TipoCambioRequestTests
     {
         [Theory]
-        [InlineData("PEN", "2023-03-03", "3.5", "4.0", 0)]
-        [InlineData("", "2023-03-03", "3.5", "4.0", 1)]
-        [InlineData("", "", "3.5", "4.0", 2)]
-        [InlineData("", "", "0", "4.0", 3)]
-        [InlineData("", "", "0", "-5", 4)]
+        [InlineData("PEN", "2023-02-03", "3.5", "4.0", 0)]
+        [InlineData("", "2023-02-03", "3.5", "4.0", 1)]
+        [InlineData("", "2023-03-03", "3.5", "4.0", 2)]
+        [InlineData("", "2023-03-03", "0", "4.0", 3)]
+        [InlineData("", "2023-03-03", "0", "-5", 4)]
         public async Task ValidateModel_CreateTipoCambioRequest(string moneda, string fecha, string compra, string venta
             , int expectedErrors )
         {
             var request = new CreateTipoCambioRequest
             {
                 Moneda = moneda,
-                Fecha = string.IsNullOrEmpty(fecha) ? DateTime.MinValue : DateTime.Parse(fecha),
+                Fecha = string.IsNullOrEmpty(fecha) ? DateTime.UtcNow : DateTime.Parse(fecha),
                 Compra = Convert.ToDecimal(compra),
                 Venta = Convert.ToDecimal(venta)
             };

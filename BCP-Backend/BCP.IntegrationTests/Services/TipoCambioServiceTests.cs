@@ -44,6 +44,9 @@ namespace BCP.IntegrationTests.Services
             
             Assert.NotNull(response.Data);
             Assert.Equal("Tipo de Cambio registrado correctamente", response.Message);
+            Assert.Equal(request.Fecha.ToString("dd/MM/yyyy"), response.Data.Fecha);
+            Assert.Equal(request.Compra, response.Data.Compra);
+            Assert.Equal(request.Venta, response.Data.Venta);
             Assert.True(response.Succeeded);
         }
         
@@ -119,6 +122,8 @@ namespace BCP.IntegrationTests.Services
             
             Assert.NotNull(response.Data);
             Assert.Equal("Tipo de Cambio actualizado correctamente", response.Message);
+            Assert.Equal(request.Compra, response.Data.Compra);
+            Assert.Equal(request.Venta, response.Data.Venta);
             Assert.True(response.Succeeded);
         }
         

@@ -10,6 +10,12 @@ mat-sidenav-container {
   height: calc(100vh - 64px);
 }
 
+@media (max-width:800px) {
+  mat-sidenav-container {
+    height: calc(100vh - 56px);
+  }
+}
+
 mat-icon {
   margin-right: 5px;
   vertical-align: middle;
@@ -18,10 +24,6 @@ mat-icon {
 .content {
   height: calc(100vh - 97px);
   margin: 16px;
-  margin-left: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
+  margin-left: 32px;  
   border-radius: 10px;
 }

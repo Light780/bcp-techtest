@@ -21,8 +21,8 @@ export class AuthComponent implements OnInit {
     private readonly fb: FormBuilder
   ) {
     this.authForm = this.fb.group({
-      correo: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]]
+      correo: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required])
     })
   }
 
@@ -58,7 +58,7 @@ export class AuthComponent implements OnInit {
     this.usuarioService
       .attemptAuth(this.authType, credentials)
       .subscribe({
-        next: (response) => {
+        next: () => {
           void this.router.navigateByUrl('/')
         }
       })

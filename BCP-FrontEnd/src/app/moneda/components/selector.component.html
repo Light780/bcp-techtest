@@ -1,0 +1,10 @@
+<div [formGroup]="parentGroup">
+<mat-form-field class="w-100">
+  <mat-label>{{label}}</mat-label>
+  <mat-select [formControlName]="control">
+    <mat-option *ngFor="let moneda of monedas" [value]="moneda.codigoSunat">
+      {{moneda.codigoSunat}} ({{moneda.nombre}})
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+</div>

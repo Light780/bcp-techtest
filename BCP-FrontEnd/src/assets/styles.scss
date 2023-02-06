@@ -6,14 +6,25 @@
   $color-config: mat.get-color-config($bcp-theme);
   $primary-palette: map.get($color-config, 'primary');
   $accent-palette: map.get($color-config, 'accent');
+  $warn-palette: map.get($color-config, 'warn');
 
   .background-primary {
-    background-color: mat.get-color-from-palette($primary-palette, 500);
-    color: mat.get-color-from-palette($accent-palette, 500);
+    background-color: mat.get-color-from-palette($primary-palette, 500) !important;
+    color: mat.get-color-from-palette($accent-palette, 500) !important;
   }
 
   .background-secondary {
-    background-color: mat.get-color-from-palette($accent-palette, 500);
+    background-color: mat.get-color-from-palette($accent-palette, 500) !important;
+    color: mat.get-color-from-palette($primary-palette, 500) !important;
+  }
+
+  .background-warn {
+    background-color: mat.get-color-from-palette($warn-palette, 500) !important;
+    color: mat.get-color-from-palette($accent-palette, 500) !important;
+  }
+  .background-danger {
+    background-color: #D42626 !important;
+    color: mat.get-color-from-palette($accent-palette, 500) !important;
   }
 
   .mat-expansion-indicator::after {
@@ -21,11 +32,25 @@
   }
 
   .text-primary-mat {
-    color: mat.get-color-from-palette($primary-palette, 500)
+    color: mat.get-color-from-palette($primary-palette, 500) !important;
   }
 
   .text-accent-mat {
     color: mat.get-color-from-palette($accent-palette, 500) !important;
+  }
+  
+  .swal2-icon.swal2-error {
+    border-color: mat.get-color-from-palette($warn-palette, 500) !important;
+    color: mat.get-color-from-palette($warn-palette, 500) !important;
+  }
+
+  .swal2-icon.swal2-error [class^=swal2-x-mark-line] {
+    background-color: mat.get-color-from-palette($warn-palette, 500) !important;
+  }
+
+  .swal2-popup {
+    background-color: mat.get-color-from-palette($accent-palette, 500) !important;
+    color: mat.get-color-from-palette($primary-palette, 500) !important;
   }
 }
 

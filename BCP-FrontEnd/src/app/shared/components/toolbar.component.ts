@@ -22,6 +22,7 @@ export class ToolbarComponent implements OnInit {
     this.usuarioService.currentUser.subscribe(
       (usuario) => {
         this.currentUser = usuario
+        if (this.currentUser.nombreCompleto.length > 12) { this.currentUser.nombreCompleto = this.currentUser.nombreCompleto.substring(0, 12).concat('...') }
       }
     )
   }

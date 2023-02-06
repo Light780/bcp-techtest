@@ -49,8 +49,10 @@ namespace BCP.IntegrationTests.Services
             var response = await usuarioService.Register(request);
             
             Assert.NotNull(response.Data);
-            Assert.Equal("Usuario registrado correctamente", response.Message);
+            Assert.Equal("Te has registrado exitosamente", response.Message);
             Assert.Equal("TokenGenerado", response.Data.Token);
+            Assert.Equal(request.NombreCompleto, response.Data.NombreCompleto);
+            Assert.Equal(request.Correo, response.Data.Correo);
             Assert.True(response.Succeeded);
         }
         
@@ -104,6 +106,7 @@ namespace BCP.IntegrationTests.Services
             
             Assert.NotNull(response.Data);
             Assert.Equal("TokenGenerado", response.Data.Token);
+            Assert.Equal(request.Correo, response.Data.Correo);
             Assert.True(response.Succeeded);
         }
         

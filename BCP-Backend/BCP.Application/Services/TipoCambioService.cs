@@ -25,6 +25,7 @@ namespace BCP.Application.Services
         
         public async Task<Response<GetTipoCambioResponse>> Create(CreateTipoCambioRequest request)
         {
+            request.Fecha = request.Fecha.ToLocalTime();
             var validator = new CreateTipoCambioValidator();
             var validatorResult = await validator.ValidateAsync(request);
             if (!validatorResult.IsValid)

@@ -1,0 +1,8 @@
+<div class="p-4">
+  <h2 class="text-center mb-1 text-primary-mat mb-5">Gestión de Tipo de Cambio</h2> 
+  <div class="d-flex flex-row-reverse">    
+      <button mat-raised-button color="primary" class="mb-3" (click)="new()">Nuevo</button>    
+  </div>
+  
+  <app-table class="w-100" [tiposCambio]="tiposCambio" (edit)="edit($event)" (delete)="delete($event)"></app-table>   
+</div>

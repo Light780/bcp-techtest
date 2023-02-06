@@ -42,8 +42,14 @@ namespace BCP.UnitTests.Security
         [Fact]
         public void ValidateToken_IsValid()
         {
-            const string authToken =
-                "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQnJ1bm8gUmFtb3MiLCJlbWFpbCI6ImJydW5vQGdtYWlsLmNvbSIsIm5iZiI6MTY3NTQ2OTU4NiwiZXhwIjoxNjc1NDc2Nzg2LCJpYXQiOjE2NzU0Njk1ODZ9.TLJOrlN5sGELs9w4lJxVNeUrQiTa1396qimpbd7G5-ACy1-FJTvh75u3dXwqprBLHPOCCCOOVfawGMojg9x8oA";
+            var usuario = new Usuario
+            {
+                NombreCompleto = "Bruno Ramos",
+                Correo = "bruno@gmail.com"
+            };
+
+            var authToken = _jwtGenerator.CreateToken(usuario);
+            
             var tokenHandler = new JwtSecurityTokenHandler();
             var validationParameters = new TokenValidationParameters
             {
@@ -60,8 +66,13 @@ namespace BCP.UnitTests.Security
         [Fact]
         public void ValidateToken_IsInvalid()
         {
-            const string authToken =
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
+            var usuario = new Usuario
+            {
+                NombreCompleto = "Bruno Ramos",
+                Correo = "bruno@gmail.com"
+            };
+
+            var authToken = _jwtGenerator.CreateToken(usuario) + "abcde";
             var tokenHandler = new JwtSecurityTokenHandler();
             var validationParameters = new TokenValidationParameters
             {

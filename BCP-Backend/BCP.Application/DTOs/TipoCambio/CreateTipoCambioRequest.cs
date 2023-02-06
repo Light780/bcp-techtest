@@ -16,7 +16,9 @@ namespace BCP.Application.DTOs.TipoCambio
         public CreateTipoCambioValidator()
         {
             RuleFor(p => p.Moneda)
+                .Cascade(CascadeMode.Stop)
                 .NotNull().WithMessage("Moneda es requerido")
+                .NotEmpty().WithMessage("Moneda es requerido")
                 .Length(3).WithMessage("Moneda debe tener una longitud de 3 caracteres");
 
             RuleFor(p => p.Compra)
@@ -26,7 +28,7 @@ namespace BCP.Application.DTOs.TipoCambio
                 .GreaterThan(0).WithMessage("Venta debe ser mayor a 0");
             
             RuleFor(p => p.Fecha)
-                .LessThan(DateTime.Now.AddDays(1)).WithMessage("Fecha no puede ser mayor a la de hoy");
+                .LessThan(DateTime.Now).WithMessage("Fecha no puede ser mayor a la de hoy");
 
         }
     }

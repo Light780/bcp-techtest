@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Text.Json;
-using BCP.Application.Exceptions;
 
 namespace BCP.Application.Wrappers
 {
