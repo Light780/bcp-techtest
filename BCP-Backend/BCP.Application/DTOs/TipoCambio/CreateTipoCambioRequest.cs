@@ -28,7 +28,7 @@ namespace BCP.Application.DTOs.TipoCambio
                 .GreaterThan(0).WithMessage("Venta debe ser mayor a 0");
             
             RuleFor(p => p.Fecha)
-                .LessThan(DateTime.Now).WithMessage("Fecha no puede ser mayor a la de hoy");
+                .LessThan(DateTime.UtcNow).WithMessage("Fecha no puede ser mayor a la de hoy");
 
         }
     }

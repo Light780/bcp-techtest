@@ -8,6 +8,7 @@ using BCP.Application.Wrappers;
 using BCP.Infraestructure;
 using BCP.Infraestructure.Persistence;
 using BCP.WebApi.Middlewares;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -18,6 +19,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
@@ -64,6 +66,8 @@ namespace BCP.WebApi
                         ValidateIssuer = false
                     };
                 });
+            
+            services.TryAddSingleton<ISystemClock, SystemClock>();
             
             services.AddSwaggerGen( c => {
                 c.SwaggerDoc("v1", new OpenApiInfo{
