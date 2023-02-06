@@ -32,7 +32,7 @@ namespace BCP.Application.Security
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires =  DateTime.UtcNow.AddHours(2),
+                Expires =  DateTime.Now.AddHours(2),
                 SigningCredentials = credentials
             };
             
