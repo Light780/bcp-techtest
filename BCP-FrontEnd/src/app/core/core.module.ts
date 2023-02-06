@@ -6,6 +6,7 @@ import {
   ApiService,
   AuthGuard,
   JwtService,
+  LoadingService,
   MonedaService,
   SwalService,
   TipoCambioService,
@@ -26,7 +27,8 @@ import {
     MonedaService,
     TipoCambioService,
     UsuarioService,
-    SwalService
+    SwalService,
+    LoadingService
   ]
 })
 export class CoreModule {

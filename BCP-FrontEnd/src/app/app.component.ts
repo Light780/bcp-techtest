@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { UsuarioService } from './core'
+import { LoadingService } from './core/services/loading.service'
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,11 @@ import { UsuarioService } from './core'
 export class AppComponent implements OnInit {
   title = 'BCP'
 
+  loading$ = this.loader.loading$
+
   constructor (
-    private readonly usuarioService: UsuarioService
+    private readonly usuarioService: UsuarioService,
+    private readonly loader: LoadingService
   ) {}
 
   ngOnInit (): void {
