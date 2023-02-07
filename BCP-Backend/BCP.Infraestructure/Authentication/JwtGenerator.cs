@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using BCP.Application.Interfaces.Security;
+using BCP.Application.Interfaces.Authentication;
 using BCP.Domain.Entities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
-namespace BCP.Application.Security
+namespace BCP.Infraestructure.Authentication
 {
     public class JwtGenerator : IJwtGenerator
     {
@@ -19,11 +19,11 @@ namespace BCP.Application.Security
             _configuration = configuration;
         }
         
-        public string CreateToken(Usuario usuario)
+        public string GenerateToken(Usuario usuario)
         {
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Name, usuario.NombreCompleto),
+                new Claim(ClaimTypes.Name, usuario.NombreCompleto),
                 new Claim(JwtRegisteredClaimNames.Email, usuario.Correo)
             };
             

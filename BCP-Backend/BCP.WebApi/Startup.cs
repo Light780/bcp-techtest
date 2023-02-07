@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BCP.Application;
+using BCP.Application.Interfaces.Common;
 using BCP.Application.Wrappers;
 using BCP.Infraestructure;
 using BCP.Infraestructure.Persistence;
 using BCP.WebApi.Middlewares;
+using BCP.WebApi.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -54,6 +56,8 @@ namespace BCP.WebApi
             services.AddInfraestructure();
             
             services.AddApplicationLayer();
+
+            services.AddScoped<IUsuarioSession, UsuarioSession>();
             
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>

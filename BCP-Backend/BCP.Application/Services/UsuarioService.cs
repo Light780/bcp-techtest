@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BCP.Application.DTOs.Usuario;
 using BCP.Application.Exceptions;
+using BCP.Application.Interfaces.Authentication;
 using BCP.Application.Interfaces.Common;
-using BCP.Application.Interfaces.Security;
 using BCP.Application.Interfaces.Services;
 using BCP.Application.Wrappers;
 using Microsoft.EntityFrameworkCore;
@@ -50,7 +50,7 @@ namespace BCP.Application.Services
             {
                 NombreCompleto = usuario.NombreCompleto,
                 Correo = usuario.Correo,
-                Token = _jwtGenerator.CreateToken(usuario)
+                Token = _jwtGenerator.GenerateToken(usuario)
             };
             
             return new Response<LoginUsuarioResponse>(loginResponse, "Te has registrado exitosamente");
@@ -71,7 +71,7 @@ namespace BCP.Application.Services
             {
                 NombreCompleto = usuario.NombreCompleto,
                 Correo = usuario.Correo,
-                Token = _jwtGenerator.CreateToken(usuario)
+                Token = _jwtGenerator.GenerateToken(usuario)
             };
             
             return new Response<LoginUsuarioResponse>(loginResponse);
@@ -87,7 +87,7 @@ namespace BCP.Application.Services
             {
                 NombreCompleto = usuario.NombreCompleto,
                 Correo = usuario.Correo,
-                Token = _jwtGenerator.CreateToken(usuario)
+                Token = _jwtGenerator.GenerateToken(usuario)
             };
             
             return new Response<LoginUsuarioResponse>(loginResponse);

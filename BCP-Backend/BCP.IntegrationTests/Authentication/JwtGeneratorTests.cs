@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
-using BCP.Application.Interfaces.Security;
-using BCP.Application.Security;
+using BCP.Application.Interfaces.Authentication;
 using BCP.Domain.Entities;
+using BCP.Infraestructure.Authentication;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Xunit;
 
-namespace BCP.UnitTests.Security
+namespace BCP.IntegrationTests.Authentication
 {
     public class JwtGeneratorTests
     {
@@ -34,7 +34,7 @@ namespace BCP.UnitTests.Security
                 Correo = "bruno@gmail.com"
             };
 
-            var token = _jwtGenerator.CreateToken(usuario);
+            var token = _jwtGenerator.GenerateToken(usuario);
             
             Assert.NotNull(token);
         }
@@ -48,7 +48,7 @@ namespace BCP.UnitTests.Security
                 Correo = "bruno@gmail.com"
             };
 
-            var authToken = _jwtGenerator.CreateToken(usuario);
+            var authToken = _jwtGenerator.GenerateToken(usuario);
             
             var tokenHandler = new JwtSecurityTokenHandler();
             var validationParameters = new TokenValidationParameters
@@ -72,7 +72,7 @@ namespace BCP.UnitTests.Security
                 Correo = "bruno@gmail.com"
             };
 
-            var authToken = _jwtGenerator.CreateToken(usuario) + "abcde";
+            var authToken = _jwtGenerator.GenerateToken(usuario) + "abcde";
             var tokenHandler = new JwtSecurityTokenHandler();
             var validationParameters = new TokenValidationParameters
             {

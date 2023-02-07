@@ -2,8 +2,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BCP.Application.DTOs.Usuario;
 using BCP.Application.Exceptions;
+using BCP.Application.Interfaces.Authentication;
 using BCP.Application.Interfaces.Common;
-using BCP.Application.Interfaces.Security;
 using BCP.Application.Interfaces.Services;
 using BCP.Application.Mappings;
 using BCP.Application.Services;
@@ -38,7 +38,7 @@ namespace BCP.IntegrationTests.Services
             IUsuarioService usuarioService =
                 new UsuarioService(_context, _mapper, _mockJwtGenerator.Object, _mockUsuarioSession.Object);
             
-            _mockJwtGenerator.Setup(_ => _.CreateToken(It.IsAny<Usuario>())).Returns("TokenGenerado");
+            _mockJwtGenerator.Setup(_ => _.GenerateToken(It.IsAny<Usuario>())).Returns("TokenGenerado");
             var request = new RegisterUsuarioRequest
             {
                 NombreCompleto = "Bruno Ramos",
@@ -91,7 +91,7 @@ namespace BCP.IntegrationTests.Services
         [Fact]
         public async Task Login_ShouldReturnUsuarioWithToken()
         {
-            _mockJwtGenerator.Setup(_ => _.CreateToken(It.IsAny<Usuario>())).Returns("TokenGenerado");
+            _mockJwtGenerator.Setup(_ => _.GenerateToken(It.IsAny<Usuario>())).Returns("TokenGenerado");
 
             IUsuarioService usuarioService =
                 new UsuarioService(_context, _mapper, _mockJwtGenerator.Object, _mockUsuarioSession.Object);
@@ -145,7 +145,7 @@ namespace BCP.IntegrationTests.Services
         [Fact]
         public async Task GetByToken_ShouldReturnUsuarioWithToken()
         {
-            _mockJwtGenerator.Setup(_ => _.CreateToken(It.IsAny<Usuario>())).Returns("TokenGenerado");
+            _mockJwtGenerator.Setup(_ => _.GenerateToken(It.IsAny<Usuario>())).Returns("TokenGenerado");
             _mockUsuarioSession.Setup(_ => _.GetUsuarioSession()).Returns("brunorlm88@gmail.com");
 
             IUsuarioService usuarioService =

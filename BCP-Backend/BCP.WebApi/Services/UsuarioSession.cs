@@ -1,9 +1,9 @@
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Security.Claims;
-using BCP.Application.Interfaces.Security;
+using BCP.Application.Interfaces.Common;
 using Microsoft.AspNetCore.Http;
 
-namespace BCP.Application.Security
+namespace BCP.WebApi.Services
 {
     public class UsuarioSession : IUsuarioSession
     {
@@ -20,7 +20,7 @@ namespace BCP.Application.Security
                 .HttpContext
                 .User?
                 .Claims?
-                .FirstOrDefault(c => c.Type == ClaimTypes.Email)?
+                .FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Email)?
                 .Value;
         }
     }

@@ -1,4 +1,4 @@
-namespace BCP.Application.Interfaces.Security
+namespace BCP.Application.Interfaces.Common
 {
     public interface IUsuarioSession
     {

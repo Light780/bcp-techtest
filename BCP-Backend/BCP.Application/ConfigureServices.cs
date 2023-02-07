@@ -1,7 +1,5 @@
 using System.Reflection;
-using BCP.Application.Interfaces.Security;
 using BCP.Application.Interfaces.Services;
-using BCP.Application.Security;
 using BCP.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,8 +13,6 @@ namespace BCP.Application
             services.AddScoped<IMonedaService, MonedaService>();
             services.AddScoped<ITipoCambioService, TipoCambioService>();
             services.AddScoped<IUsuarioService, UsuarioService>();
-            services.AddScoped<IJwtGenerator, JwtGenerator>();
-            services.AddScoped<IUsuarioSession, UsuarioSession>();
         }
     }
 }
