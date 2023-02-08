@@ -18,13 +18,13 @@ const routes: Routes = [
     loadChildren: async (): Promise<typeof HomeModule> => await import('./home/home.module').then(m => m.HomeModule)
   },
   {
-    path: 'auth',
-    loadChildren: async (): Promise<typeof AuthModule> => await import('./auth/auth.module').then(m => m.AuthModule)
-  },
-  {
     path: 'moneda',
     component: SidenavComponent,
     loadChildren: async (): Promise<typeof MonedaModule> => await import('./moneda/moneda.module').then(m => m.MonedaModule)
+  },
+  {
+    path: 'auth',
+    loadChildren: async (): Promise<typeof AuthModule> => await import('./auth/auth.module').then(m => m.AuthModule)
   },
   { path: '**', redirectTo: 'home' }
 ]

@@ -23,8 +23,8 @@ namespace BCP.Infraestructure.Authentication
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, usuario.NombreCompleto),
-                new Claim(JwtRegisteredClaimNames.Email, usuario.Correo)
+                new Claim(ClaimTypes.GivenName, usuario.NombreCompleto),
+                new Claim(ClaimTypes.Email, usuario.Correo)
             };
             
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:SecretKey"]));

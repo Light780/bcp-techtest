@@ -1,5 +1,5 @@
-using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using BCP.Application.Interfaces.Common;
 using Microsoft.AspNetCore.Http;
 
@@ -20,7 +20,7 @@ namespace BCP.WebApi.Services
                 .HttpContext
                 .User?
                 .Claims?
-                .FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Email)?
+                .FirstOrDefault(c => c.Type == ClaimTypes.Email)?
                 .Value;
         }
     }
